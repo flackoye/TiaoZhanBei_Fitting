@@ -1,0 +1,501 @@
+{
+  "device": "cpu",
+  "window_summary": {
+    "csv_summary": {
+      "csv_pattern": "VTEST_S*.csv",
+      "num_csv_files": 11,
+      "files": [
+        {
+          "file_name": "VTEST_S00.csv",
+          "file_path": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\csv_by_stress\\VTEST_S00.csv",
+          "rows": 7505,
+          "stress_mpa": [
+            0
+          ],
+          "damage_levels": [
+            80,
+            60,
+            40,
+            20,
+            0
+          ],
+          "segment_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "file_name": "VTEST_S00_1.csv",
+          "file_path": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\csv_by_stress\\VTEST_S00_1.csv",
+          "rows": 7505,
+          "stress_mpa": [
+            0
+          ],
+          "damage_levels": [
+            80,
+            60,
+            40,
+            20,
+            0
+          ],
+          "segment_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "file_name": "VTEST_S10.csv",
+          "file_path": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\csv_by_stress\\VTEST_S10.csv",
+          "rows": 7505,
+          "stress_mpa": [
+            10
+          ],
+          "damage_levels": [
+            80,
+            60,
+            40,
+            20,
+            0
+          ],
+          "segment_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "file_name": "VTEST_S10_1.csv",
+          "file_path": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\csv_by_stress\\VTEST_S10_1.csv",
+          "rows": 7505,
+          "stress_mpa": [
+            10
+          ],
+          "damage_levels": [
+            80,
+            60,
+            40,
+            20,
+            0
+          ],
+          "segment_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "file_name": "VTEST_S20.csv",
+          "file_path": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\csv_by_stress\\VTEST_S20.csv",
+          "rows": 7505,
+          "stress_mpa": [
+            20
+          ],
+          "damage_levels": [
+            80,
+            60,
+            40,
+            20,
+            0
+          ],
+          "segment_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "file_name": "VTEST_S20_1.csv",
+          "file_path": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\csv_by_stress\\VTEST_S20_1.csv",
+          "rows": 7505,
+          "stress_mpa": [
+            20
+          ],
+          "damage_levels": [
+            80,
+            60,
+            40,
+            20,
+            0
+          ],
+          "segment_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "file_name": "VTEST_S30.csv",
+          "file_path": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\csv_by_stress\\VTEST_S30.csv",
+          "rows": 7505,
+          "stress_mpa": [
+            30
+          ],
+          "damage_levels": [
+            80,
+            60,
+            40,
+            20,
+            0
+          ],
+          "segment_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "file_name": "VTEST_S30_1.csv",
+          "file_path": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\csv_by_stress\\VTEST_S30_1.csv",
+          "rows": 7505,
+          "stress_mpa": [
+            30
+          ],
+          "damage_levels": [
+            80,
+            60,
+            40,
+            20,
+            0
+          ],
+          "segment_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "file_name": "VTEST_S40.csv",
+          "file_path": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\csv_by_stress\\VTEST_S40.csv",
+          "rows": 7505,
+          "stress_mpa": [
+            40
+          ],
+          "damage_levels": [
+            80,
+            60,
+            40,
+            20,
+            0
+          ],
+          "segment_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "file_name": "VTEST_S40_1.csv",
+          "file_path": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\csv_by_stress\\VTEST_S40_1.csv",
+          "rows": 7505,
+          "stress_mpa": [
+            40
+          ],
+          "damage_levels": [
+            80,
+            60,
+            40,
+            20,
+            0
+          ],
+          "segment_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "file_name": "VTEST_S99.csv",
+          "file_path": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\csv_by_stress\\VTEST_S99.csv",
+          "rows": 7505,
+          "stress_mpa": [
+            10,
+            20,
+            30,
+            40
+          ],
+          "damage_levels": [
+            80,
+            60,
+            40,
+            20,
+            0
+          ],
+          "segment_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      ]
+    },
+    "window_dir": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows",
+    "num_csv_files": 11,
+    "window_rule": {
+      "advancedV1": "80 multiscale physical features from windows 25/50/100/200, first valid end index 199, stride 1",
+      "advancedV2": "100 point sequence window, first valid end index 99, stride 1",
+      "advancedV3": "100 point sequence window aligned with 80 physical features, first valid end index 199, stride 1"
+    },
+    "files": [
+      {
+        "source_file": "VTEST_S00.csv",
+        "status": "reused",
+        "v2_window_size": 100,
+        "v2_stride": 1,
+        "v2_windows": 7406,
+        "v1v3_min_window_size": 200,
+        "v1v3_sequence_window_size": 100,
+        "v1v3_stride": 1,
+        "v1v3_windows": 7306,
+        "artifacts": {
+          "v2_seq100": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S00_v2_seq100.npz",
+          "v2_meta100": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S00_v2_meta100.csv",
+          "v1v3_seq100_aligned200": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S00_v1v3_seq100_aligned200.npz",
+          "v1v3_phys80": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S00_v1v3_phys80.npz",
+          "v1v3_meta200": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S00_v1v3_meta200.csv"
+        }
+      },
+      {
+        "source_file": "VTEST_S00_1.csv",
+        "status": "reused",
+        "v2_window_size": 100,
+        "v2_stride": 1,
+        "v2_windows": 7406,
+        "v1v3_min_window_size": 200,
+        "v1v3_sequence_window_size": 100,
+        "v1v3_stride": 1,
+        "v1v3_windows": 7306,
+        "artifacts": {
+          "v2_seq100": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S00_1_v2_seq100.npz",
+          "v2_meta100": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S00_1_v2_meta100.csv",
+          "v1v3_seq100_aligned200": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S00_1_v1v3_seq100_aligned200.npz",
+          "v1v3_phys80": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S00_1_v1v3_phys80.npz",
+          "v1v3_meta200": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S00_1_v1v3_meta200.csv"
+        }
+      },
+      {
+        "source_file": "VTEST_S10.csv",
+        "status": "reused",
+        "v2_window_size": 100,
+        "v2_stride": 1,
+        "v2_windows": 7406,
+        "v1v3_min_window_size": 200,
+        "v1v3_sequence_window_size": 100,
+        "v1v3_stride": 1,
+        "v1v3_windows": 7306,
+        "artifacts": {
+          "v2_seq100": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S10_v2_seq100.npz",
+          "v2_meta100": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S10_v2_meta100.csv",
+          "v1v3_seq100_aligned200": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S10_v1v3_seq100_aligned200.npz",
+          "v1v3_phys80": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S10_v1v3_phys80.npz",
+          "v1v3_meta200": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S10_v1v3_meta200.csv"
+        }
+      },
+      {
+        "source_file": "VTEST_S10_1.csv",
+        "status": "reused",
+        "v2_window_size": 100,
+        "v2_stride": 1,
+        "v2_windows": 7406,
+        "v1v3_min_window_size": 200,
+        "v1v3_sequence_window_size": 100,
+        "v1v3_stride": 1,
+        "v1v3_windows": 7306,
+        "artifacts": {
+          "v2_seq100": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S10_1_v2_seq100.npz",
+          "v2_meta100": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S10_1_v2_meta100.csv",
+          "v1v3_seq100_aligned200": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S10_1_v1v3_seq100_aligned200.npz",
+          "v1v3_phys80": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S10_1_v1v3_phys80.npz",
+          "v1v3_meta200": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S10_1_v1v3_meta200.csv"
+        }
+      },
+      {
+        "source_file": "VTEST_S20.csv",
+        "status": "reused",
+        "v2_window_size": 100,
+        "v2_stride": 1,
+        "v2_windows": 7406,
+        "v1v3_min_window_size": 200,
+        "v1v3_sequence_window_size": 100,
+        "v1v3_stride": 1,
+        "v1v3_windows": 7306,
+        "artifacts": {
+          "v2_seq100": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S20_v2_seq100.npz",
+          "v2_meta100": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S20_v2_meta100.csv",
+          "v1v3_seq100_aligned200": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S20_v1v3_seq100_aligned200.npz",
+          "v1v3_phys80": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S20_v1v3_phys80.npz",
+          "v1v3_meta200": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S20_v1v3_meta200.csv"
+        }
+      },
+      {
+        "source_file": "VTEST_S20_1.csv",
+        "status": "reused",
+        "v2_window_size": 100,
+        "v2_stride": 1,
+        "v2_windows": 7406,
+        "v1v3_min_window_size": 200,
+        "v1v3_sequence_window_size": 100,
+        "v1v3_stride": 1,
+        "v1v3_windows": 7306,
+        "artifacts": {
+          "v2_seq100": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S20_1_v2_seq100.npz",
+          "v2_meta100": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S20_1_v2_meta100.csv",
+          "v1v3_seq100_aligned200": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S20_1_v1v3_seq100_aligned200.npz",
+          "v1v3_phys80": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S20_1_v1v3_phys80.npz",
+          "v1v3_meta200": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S20_1_v1v3_meta200.csv"
+        }
+      },
+      {
+        "source_file": "VTEST_S30.csv",
+        "status": "reused",
+        "v2_window_size": 100,
+        "v2_stride": 1,
+        "v2_windows": 7406,
+        "v1v3_min_window_size": 200,
+        "v1v3_sequence_window_size": 100,
+        "v1v3_stride": 1,
+        "v1v3_windows": 7306,
+        "artifacts": {
+          "v2_seq100": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S30_v2_seq100.npz",
+          "v2_meta100": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S30_v2_meta100.csv",
+          "v1v3_seq100_aligned200": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S30_v1v3_seq100_aligned200.npz",
+          "v1v3_phys80": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S30_v1v3_phys80.npz",
+          "v1v3_meta200": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S30_v1v3_meta200.csv"
+        }
+      },
+      {
+        "source_file": "VTEST_S30_1.csv",
+        "status": "reused",
+        "v2_window_size": 100,
+        "v2_stride": 1,
+        "v2_windows": 7406,
+        "v1v3_min_window_size": 200,
+        "v1v3_sequence_window_size": 100,
+        "v1v3_stride": 1,
+        "v1v3_windows": 7306,
+        "artifacts": {
+          "v2_seq100": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S30_1_v2_seq100.npz",
+          "v2_meta100": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S30_1_v2_meta100.csv",
+          "v1v3_seq100_aligned200": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S30_1_v1v3_seq100_aligned200.npz",
+          "v1v3_phys80": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S30_1_v1v3_phys80.npz",
+          "v1v3_meta200": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S30_1_v1v3_meta200.csv"
+        }
+      },
+      {
+        "source_file": "VTEST_S40.csv",
+        "status": "reused",
+        "v2_window_size": 100,
+        "v2_stride": 1,
+        "v2_windows": 7406,
+        "v1v3_min_window_size": 200,
+        "v1v3_sequence_window_size": 100,
+        "v1v3_stride": 1,
+        "v1v3_windows": 7306,
+        "artifacts": {
+          "v2_seq100": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S40_v2_seq100.npz",
+          "v2_meta100": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S40_v2_meta100.csv",
+          "v1v3_seq100_aligned200": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S40_v1v3_seq100_aligned200.npz",
+          "v1v3_phys80": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S40_v1v3_phys80.npz",
+          "v1v3_meta200": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S40_v1v3_meta200.csv"
+        }
+      },
+      {
+        "source_file": "VTEST_S40_1.csv",
+        "status": "reused",
+        "v2_window_size": 100,
+        "v2_stride": 1,
+        "v2_windows": 7406,
+        "v1v3_min_window_size": 200,
+        "v1v3_sequence_window_size": 100,
+        "v1v3_stride": 1,
+        "v1v3_windows": 7306,
+        "artifacts": {
+          "v2_seq100": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S40_1_v2_seq100.npz",
+          "v2_meta100": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S40_1_v2_meta100.csv",
+          "v1v3_seq100_aligned200": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S40_1_v1v3_seq100_aligned200.npz",
+          "v1v3_phys80": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S40_1_v1v3_phys80.npz",
+          "v1v3_meta200": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S40_1_v1v3_meta200.csv"
+        }
+      },
+      {
+        "source_file": "VTEST_S99.csv",
+        "status": "reused",
+        "v2_window_size": 100,
+        "v2_stride": 1,
+        "v2_windows": 7406,
+        "v1v3_min_window_size": 200,
+        "v1v3_sequence_window_size": 100,
+        "v1v3_stride": 1,
+        "v1v3_windows": 7306,
+        "artifacts": {
+          "v2_seq100": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S99_v2_seq100.npz",
+          "v2_meta100": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S99_v2_meta100.csv",
+          "v1v3_seq100_aligned200": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S99_v1v3_seq100_aligned200.npz",
+          "v1v3_phys80": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S99_v1v3_phys80.npz",
+          "v1v3_meta200": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\processed\\model_windows\\VTEST_S99_v1v3_meta200.csv"
+        }
+      }
+    ]
+  },
+  "num_prediction_rows": 242198,
+  "models": [
+    "advancedV1_multiscale_extratrees",
+    "advancedV2_cnn_bilstm",
+    "advancedV3_physics_fusion"
+  ],
+  "overall_metrics": [
+    {
+      "model": "advancedV1_multiscale_extratrees",
+      "num_windows": 80366,
+      "damage_accuracy": 0.7303337232162855,
+      "stress_accuracy": 0.8576388024786601,
+      "multitask_state_accuracy": 0.6840330488017321,
+      "state_head_accuracy": 0.6840330488017321,
+      "state_head_macro_f1": 0.6808153185017517,
+      "mean_state_confidence": NaN
+    },
+    {
+      "model": "advancedV2_cnn_bilstm",
+      "num_windows": 81466,
+      "damage_accuracy": 0.7033118110622837,
+      "stress_accuracy": 0.8046669776348415,
+      "multitask_state_accuracy": 0.6453980801806889,
+      "state_head_accuracy": 0.6941791667689589,
+      "state_head_macro_f1": 0.6667094595100365,
+      "mean_state_confidence": 0.7577152848243713
+    },
+    {
+      "model": "advancedV3_physics_fusion",
+      "num_windows": 80366,
+      "damage_accuracy": 0.7176169026702834,
+      "stress_accuracy": 0.8312097155513526,
+      "multitask_state_accuracy": 0.6789811611875669,
+      "state_head_accuracy": 0.6989647363312844,
+      "state_head_macro_f1": 0.6844218107915206,
+      "mean_state_confidence": 0.9329656958580017
+    }
+  ]
+}

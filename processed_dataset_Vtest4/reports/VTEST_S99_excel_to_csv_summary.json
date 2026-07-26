@@ -1,0 +1,45 @@
+{
+  "source_excel": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\csv_by_stress\\VTEST_S99.xlsx",
+  "output_csv": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\csv_by_stress\\VTEST_S99.csv",
+  "rows": 7505,
+  "columns": [
+    "experiment_id",
+    "sample_index",
+    "cumulative_depth_cm",
+    "depth_cm",
+    "torque_nm",
+    "thrust_kn",
+    "true_damage_level",
+    "true_damage_class",
+    "true_stress_mpa",
+    "true_stress_class",
+    "true_state_class",
+    "segment_index",
+    "true_state_label"
+  ],
+  "experiment_ids": [
+    "VTEST_S99"
+  ],
+  "stress_mpa": [
+    10,
+    20,
+    30,
+    40
+  ],
+  "damage_levels": [
+    80,
+    60,
+    40,
+    20,
+    0
+  ],
+  "segment_indices": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "depth_min_cm": 0.0,
+  "depth_max_cm": 125.0
+}

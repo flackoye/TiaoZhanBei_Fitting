@@ -1,0 +1,251 @@
+{
+  "csv_pattern": "VTEST_S*.csv",
+  "num_csv_files": 11,
+  "files": [
+    {
+      "file_name": "VTEST_S00.csv",
+      "file_path": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\csv_by_stress\\VTEST_S00.csv",
+      "rows": 7505,
+      "stress_mpa": [
+        0
+      ],
+      "damage_levels": [
+        80,
+        60,
+        40,
+        20,
+        0
+      ],
+      "segment_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "file_name": "VTEST_S00_1.csv",
+      "file_path": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\csv_by_stress\\VTEST_S00_1.csv",
+      "rows": 7505,
+      "stress_mpa": [
+        0
+      ],
+      "damage_levels": [
+        80,
+        60,
+        40,
+        20,
+        0
+      ],
+      "segment_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "file_name": "VTEST_S10.csv",
+      "file_path": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\csv_by_stress\\VTEST_S10.csv",
+      "rows": 7505,
+      "stress_mpa": [
+        10
+      ],
+      "damage_levels": [
+        80,
+        60,
+        40,
+        20,
+        0
+      ],
+      "segment_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "file_name": "VTEST_S10_1.csv",
+      "file_path": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\csv_by_stress\\VTEST_S10_1.csv",
+      "rows": 7505,
+      "stress_mpa": [
+        10
+      ],
+      "damage_levels": [
+        80,
+        60,
+        40,
+        20,
+        0
+      ],
+      "segment_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "file_name": "VTEST_S20.csv",
+      "file_path": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\csv_by_stress\\VTEST_S20.csv",
+      "rows": 7505,
+      "stress_mpa": [
+        20
+      ],
+      "damage_levels": [
+        80,
+        60,
+        40,
+        20,
+        0
+      ],
+      "segment_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "file_name": "VTEST_S20_1.csv",
+      "file_path": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\csv_by_stress\\VTEST_S20_1.csv",
+      "rows": 7505,
+      "stress_mpa": [
+        20
+      ],
+      "damage_levels": [
+        80,
+        60,
+        40,
+        20,
+        0
+      ],
+      "segment_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "file_name": "VTEST_S30.csv",
+      "file_path": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\csv_by_stress\\VTEST_S30.csv",
+      "rows": 7505,
+      "stress_mpa": [
+        30
+      ],
+      "damage_levels": [
+        80,
+        60,
+        40,
+        20,
+        0
+      ],
+      "segment_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "file_name": "VTEST_S30_1.csv",
+      "file_path": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\csv_by_stress\\VTEST_S30_1.csv",
+      "rows": 7505,
+      "stress_mpa": [
+        30
+      ],
+      "damage_levels": [
+        80,
+        60,
+        40,
+        20,
+        0
+      ],
+      "segment_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "file_name": "VTEST_S40.csv",
+      "file_path": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\csv_by_stress\\VTEST_S40.csv",
+      "rows": 7505,
+      "stress_mpa": [
+        40
+      ],
+      "damage_levels": [
+        80,
+        60,
+        40,
+        20,
+        0
+      ],
+      "segment_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "file_name": "VTEST_S40_1.csv",
+      "file_path": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\csv_by_stress\\VTEST_S40_1.csv",
+      "rows": 7505,
+      "stress_mpa": [
+        40
+      ],
+      "damage_levels": [
+        80,
+        60,
+        40,
+        20,
+        0
+      ],
+      "segment_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "file_name": "VTEST_S99.csv",
+      "file_path": "D:\\1博士资源\\挑战杯\\随钻参数处理与状态反演prj\\processed_dataset_Vtest4\\csv_by_stress\\VTEST_S99.csv",
+      "rows": 7505,
+      "stress_mpa": [
+        10,
+        20,
+        30,
+        40
+      ],
+      "damage_levels": [
+        80,
+        60,
+        40,
+        20,
+        0
+      ],
+      "segment_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+input_file: all_model_predictions.csv
+output_dir: outputs/fitting
+group_columns: [model, source_file, experiment_id]
+depth_preference: [cumulative_depth_cm, depth_cm]
+outlier:
+  method: hampel
+  window_size: 9
+  mad_threshold: 3.5
+  iqr_multiplier: 1.5
+  jump_threshold_damage: 20.0
+  jump_threshold_stress: 10.0
+  correction: interpolate
+fitting:
+  method: savgol
+  output_depth_step: 0.1
+  savgol_window_length: 9
+  savgol_polyorder: 2
+  lowess_frac: 0.08
+  confidence_threshold: 0.7
+  low_confidence_blend: 0.8
+  high_confidence_blend: 0.2
+  preserve_run_length: 3
+  damage_bounds: data
+  stress_nonnegative: true
+  range_margin_ratio: 0.0
+evaluation:
+  high_confidence_threshold: 0.8
+  peak_quantile: 0.95
+  max_allowed_jump_damage: 20.0
+  max_allowed_jump_stress: 10.0
+plot:
+  dpi: 140
+  max_points: 4000
+  chinese_font_candidates: [Microsoft YaHei, SimHei, Arial Unicode MS, DejaVu Sans]

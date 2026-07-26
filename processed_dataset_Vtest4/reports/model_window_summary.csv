@@ -1,0 +1,12 @@
+﻿source_file,status,v2_window_size,v2_stride,v2_windows,v1v3_min_window_size,v1v3_sequence_window_size,v1v3_stride,v1v3_windows
+VTEST_S00.csv,reused,100,1,7406,200,100,1,7306
+VTEST_S00_1.csv,reused,100,1,7406,200,100,1,7306
+VTEST_S10.csv,reused,100,1,7406,200,100,1,7306
+VTEST_S10_1.csv,reused,100,1,7406,200,100,1,7306
+VTEST_S20.csv,reused,100,1,7406,200,100,1,7306
+VTEST_S20_1.csv,reused,100,1,7406,200,100,1,7306
+VTEST_S30.csv,reused,100,1,7406,200,100,1,7306
+VTEST_S30_1.csv,reused,100,1,7406,200,100,1,7306
+VTEST_S40.csv,reused,100,1,7406,200,100,1,7306
+VTEST_S40_1.csv,reused,100,1,7406,200,100,1,7306
+VTEST_S99.csv,reused,100,1,7406,200,100,1,7306
