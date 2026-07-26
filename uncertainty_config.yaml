@@ -1,0 +1,10 @@
+input_file: all_model_predictions.csv
+output_dir: outputs/uncertainty
+position_columns: [source_file, experiment_id, sample_index]
+depth_preference: [cumulative_depth_cm, depth_cm]
+random_state: 42
+minimum_weight: 0.1
+selection_metric: aurc
+mc_dropout:
+  enabled: false
+  status: unavailable_no_model_artifacts

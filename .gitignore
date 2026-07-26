@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+dist/
+build/
+
+# Output artifacts
+outputs/
+*.log
+
+# Environment
+.env
+.venv
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Testing
+.pytest_cache/
+
+# Processed dataset scripts
+processed_dataset_Vtest4/
+
+# AI-generated project docs
+CLAUDE.md
+AGENTS.md

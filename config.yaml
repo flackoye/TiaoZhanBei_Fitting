@@ -32,3 +32,7 @@ plot:
   dpi: 140
   max_points: 4000
   chinese_font_candidates: [Microsoft YaHei, SimHei, Arial Unicode MS, DejaVu Sans]
+uncertainty:
+  file: outputs/uncertainty/point_uncertainty.csv
+  join_columns: [model, source_file, experiment_id, sample_index]
+  minimum_weight: 0.1

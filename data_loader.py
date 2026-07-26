@@ -28,6 +28,37 @@ def load_predictions(path: str | Path, config: dict) -> tuple[pd.DataFrame, str,
         groups = [c for c in ["model", "source_file", "experiment_id"] if c in df]
     for c in [depth, "pred_damage_level", "pred_stress_mpa", "state_confidence"]:
         df[c] = pd.to_numeric(df[c], errors="coerce").replace([np.inf, -np.inf], np.nan)
+    # --- 加载不确定性权重（可选） ---
+    unc_cfg = config.get("uncertainty", {})
+    unc_file = unc_cfg.get("file") if isinstance(unc_cfg, dict) else None
+    if unc_file is not None:
+        unc_path = Path(unc_file)
+        if not unc_path.exists():
+            raise FileNotFoundError(f"找不到不确定性权重文件: {unc_path.resolve()}")
+        unc_df = pd.read_csv(unc_path, low_memory=False)
+        join_cols = unc_cfg.get("join_columns", ["model", "source_file", "experiment_id", "sample_index"])
+        missing_join = [c for c in join_cols if c not in unc_df.columns]
+        if missing_join:
+            raise ValueError(f"不确定性文件缺少 join 字段: {missing_join}")
+        weight_cols = ["damage_weight", "stress_weight"]
+        missing_weight = [c for c in weight_cols if c not in unc_df.columns]
+        if missing_weight:
+            raise ValueError(f"不确定性文件缺少权重字段: {missing_weight}")
+        for wc in weight_cols:
+            unc_df[wc] = pd.to_numeric(unc_df[wc], errors="coerce")
+            if unc_df[wc].isna().any():
+                raise ValueError(f"权重列 {wc} 包含非数值或缺失值")
+            out_of_range = ((unc_df[wc] < 0) | (unc_df[wc] > 1)).sum()
+            if out_of_range:
+                raise ValueError(f"权重列 {wc} 有 {out_of_range} 个值超出 [0, 1] 范围")
+        before = len(df)
+        df = df.merge(unc_df[join_cols + weight_cols], on=join_cols, how="left", validate="many_to_one")
+        if len(df) != before:
+            LOG.warning("不确定性权重连接后行数变化: %d -> %d", before, len(df))
+        LOG.info("已加载不确定性权重: %s", unc_path.name)
+    else:
+        LOG.debug("未配置不确定性权重文件，使用 state_confidence")
+
     bad_depth = int(df[depth].isna().sum())
     if bad_depth:
         LOG.warning("删除 %d 行无效孔深", bad_depth)

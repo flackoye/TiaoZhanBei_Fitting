@@ -8,7 +8,7 @@ from statsmodels.nonparametric.smoothers_lowess import lowess
 def _odd_window(n, requested, poly=2):
     w=min(int(requested), n if n%2 else n-1); w=max(poly+2+(poly+2)%2, w); return w if w<=n else (n if n%2 else n-1)
 
-def fit_curve(x, y, method, cfg, confidence=None):
+def fit_curve(x, y, method, cfg, confidence=None, continuous_blend=False):
     x=np.asarray(x,float); y=np.asarray(y,float); n=len(y)
     if n < 3: return y.copy()
     if method == "pchip": fitted=PchipInterpolator(x,y,extrapolate=False)(x)
@@ -18,8 +18,13 @@ def fit_curve(x, y, method, cfg, confidence=None):
     elif method == "cubicspline": fitted=CubicSpline(x,y,bc_type="natural")(x)
     else: raise ValueError(f"未知拟合方法: {method}")
     conf=np.nan_to_num(np.asarray(confidence if confidence is not None else np.full(n,.5),float),nan=.5)
-    threshold=cfg.get("confidence_threshold",.7)
-    blend=np.where(conf>=threshold,cfg.get("high_confidence_blend",.2),cfg.get("low_confidence_blend",.8))
+    low=cfg.get("low_confidence_blend",.8); high=cfg.get("high_confidence_blend",.2)
+    if continuous_blend:
+        # 连续融合：权重 1 → blend=high（最弱平滑），权重 0.1→ blend≈low（最强平滑）
+        blend=low - conf*(low - high)
+    else:
+        threshold=cfg.get("confidence_threshold",.7)
+        blend=np.where(conf>=threshold, high, low)
     return (1-blend)*y+blend*fitted
 
 def constrain(fitted, raw, kind, cfg):

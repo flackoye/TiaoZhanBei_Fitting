@@ -21,15 +21,22 @@ def process(config, method=None, detector=None, limit_one=False, make_plots=True
         if limit_one and gi>0: break
         g,ndup=collapse_duplicate_depths(g0,depth)
         if ndup: LOG.warning("分组 %s 聚合 %d 条重复深度记录",key,ndup)
-        x=g[depth].to_numpy(float); conf=g["state_confidence"].to_numpy(float)
+        x=g[depth].to_numpy(float)
+        # 检测是否已加载不确定性权重
+        use_weights="damage_weight" in df.columns and "stress_weight" in df.columns
         fitted_map={}; cleaned_map={}; raw_map={}; masks={}; reasons=[]
         x_dense=dd=ss=None
         for kind,col in [("damage","pred_damage_level"),("stress","pred_stress_mpa")]:
             raw=g[col].to_numpy(float); jump=out_cfg.get(f"jump_threshold_{kind}")
             mask,reason,med=detect(raw,detector,out_cfg["window_size"],out_cfg["mad_threshold"],out_cfg.get("iqr_multiplier",1.5),jump)
+            if use_weights:
+                wcol=f"{kind}_weight"
+                conf=g[wcol].to_numpy(float) if wcol in g.columns else g["state_confidence"].to_numpy(float)
+            else:
+                conf=g["state_confidence"].to_numpy(float)
             cleaned=correct(raw,mask,out_cfg["correction"],conf,med)
             raw_map[kind]=raw; cleaned_map[kind]=cleaned
-            fitted=constrain(fit_curve(x,cleaned,method,fit_cfg,conf),raw,kind,fit_cfg)
+            fitted=constrain(fit_curve(x,cleaned,method,fit_cfg,conf,continuous_blend=use_weights),raw,kind,fit_cfg)
             fitted_map[kind]=fitted; masks[kind]=mask; reasons.append(reason)
             met=metrics(raw,fitted,mask,conf,config["evaluation"]["high_confidence_threshold"],config["evaluation"]["peak_quantile"])
             met.update(dict(zip(groups,key if isinstance(key,tuple) else (key,)))); met["target"]=kind; met["method"]=f"{detector}+{method}"; summaries.append(met)
