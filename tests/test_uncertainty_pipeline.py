@@ -103,9 +103,12 @@ def test_cross_validate_returns_expected_columns():
         "mean_state_confidence": [0.8] * 12,
     })
     result = cross_validate_methods(table, random_state=42)
-    assert list(result.columns) == ["source_file", "method", "aurc", "spearman", "n_test_samples"]
-    assert set(result["method"]) == {"disagreement", "calibrated"}
-    assert len(result) == 2 * 2  # 2 source_files × 2 methods
+    # 融合方法引入了 fusion_alpha/beta/gamma 列
+    assert {"source_file", "method", "aurc", "spearman", "n_test_samples"}.issubset(set(result.columns))
+    assert "fusion_alpha" in result.columns
+    # 3 种方案（方案一 calibrated + 方案二 monotonic + 方案三 fusion 及其 21 种系数组合）
+    assert set(result["method"]) == {"calibrated", "monotonic", "fusion"}
+    assert len(result) > 2 * 4  # 至少多于 2 source_files × 4 基础方法
     assert result["n_test_samples"].iloc[0] == 6
 
 
@@ -288,8 +291,11 @@ def test_cli_writes_contract(tmp_path):
         sm = json.load(f)
     assert "damage" in sm
     assert "stress" in sm
-    assert sm["damage"] in ("disagreement", "calibrated")
-    assert sm["stress"] in ("disagreement", "calibrated")
+    VALID_METHODS = {"calibrated", "monotonic"}
+    VALID_METHODS_FUSION = {m for m in VALID_METHODS}
+    # fusion 方法名格式: fusion_a0.4_b0.4_g0.2
+    assert sm["damage"] in VALID_METHODS or sm["damage"].startswith("fusion_"), sm["damage"]
+    assert sm["stress"] in VALID_METHODS or sm["stress"].startswith("fusion_"), sm["stress"]
 
     # --- 8. Validate risk_coverage_curves.csv ---
     rc_df = pd.read_csv(output_dir / "risk_coverage_curves.csv")

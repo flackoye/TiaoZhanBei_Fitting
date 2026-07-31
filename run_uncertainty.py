@@ -25,19 +25,32 @@ import yaml
 from uncertainty_analysis.data import build_position_table
 from uncertainty_analysis.evaluation import risk_coverage
 from uncertainty_analysis.methods import (
-    ensemble_disagreement,
     fit_residual_calibrator,
     predict_calibrated_uncertainty,
+)
+from uncertainty_analysis.method2_monotonic import (
+    fit_monotonic_calibrator,
+    predict_monotonic_uncertainty,
+)
+from uncertainty_analysis.method3_fusion import (
+    compute_fusion_score,
+    fit_fusion_calibrator,
+    predict_fusion_uncertainty,
 )
 from uncertainty_analysis.pipeline import (
     cross_validate_methods,
     select_method,
+    select_best_fusion_coefficients,
     uncertainty_to_weight,
 )
 
 LOG = logging.getLogger("uncertainty")
 
 KEY_COLS = ["source_file", "experiment_id", "sample_index"]
+
+# 融合方法默认参数（文档 2.5 节）
+FUSION_WINDOW = 21
+FUSION_ETA = 0.3
 
 
 def parse_args(argv=None) -> argparse.Namespace:
@@ -55,6 +68,34 @@ def load_config(path: str) -> dict:
         return yaml.safe_load(f)
 
 
+def _parse_method_name(method_str: str) -> tuple[str, dict | None]:
+    """解析方法名称，提取基础方法和参数。
+
+    支持格式：
+    - "calibrated", "monotonic"
+    - "fusion_a0.4_b0.4_g0.2"
+
+    Parameters
+    ----------
+    method_str : str
+        select_method 返回的方法名称。
+
+    Returns
+    -------
+    base_method : str
+        基础方法名（"calibrated", "monotonic", "fusion"）。
+    params : dict or None
+        额外参数（融合系数等）。
+    """
+    if method_str.startswith("fusion_"):
+        parts = method_str.split("_")
+        alpha = float(parts[1].lstrip("a"))
+        beta = float(parts[2].lstrip("b"))
+        gamma = float(parts[3].lstrip("g"))
+        return "fusion", {"alpha": alpha, "beta": beta, "gamma": gamma}
+    return method_str, None
+
+
 def _process_target(
     target: str,
     df: pd.DataFrame,
@@ -68,8 +109,7 @@ def _process_target(
         Position table augmented with ``{target}_uncertainty``,
         ``{target}_confidence``, ``{target}_weight``.
     method_name : str
-        Name of the selected uncertainty method (``"disagreement"`` or
-        ``"calibrated"``).
+        Name of the selected uncertainty method.
     risk_coverage_df : pd.DataFrame
         Risk-coverage curve for the selected method with a ``target`` column.
     eval_df : pd.DataFrame
@@ -77,6 +117,7 @@ def _process_target(
     """
     rng = cfg.get("random_state", 42)
     minimum = cfg.get("minimum_weight", 0.1)
+    methods = cfg.get("methods", ["calibrated", "monotonic", "fusion"])
 
     LOG.info("[%s] 构建位置表 ...", target)
     table = build_position_table(df, target)
@@ -84,44 +125,70 @@ def _process_target(
              target, len(table), table["source_file"].nunique())
 
     # (b) Leave-one-source_file-out cross-validation
-    LOG.info("[%s] 留一文件交叉验证 (%d folds) ...", target, table["source_file"].nunique())
+    n_files = table["source_file"].nunique()
+    LOG.info("[%s] 留一文件交叉验证 (%d folds) ...", target, n_files)
     t0 = time.perf_counter()
-    metrics = cross_validate_methods(table, random_state=rng)
+    metrics = cross_validate_methods(
+        table,
+        random_state=rng,
+        methods=methods,
+        fusion_window=FUSION_WINDOW,
+        fusion_eta=FUSION_ETA,
+    )
     LOG.info("[%s] 交叉验证完成: %d 个评估项, 用时 %.1f秒",
              target, len(metrics), time.perf_counter() - t0)
 
     # (c) Select the best method
     if metrics.empty:
-        best_method = "disagreement"
-        LOG.info("[%s] CV空结果，回退到 disagreement 方法", target)
+        best_method = "calibrated"
+        LOG.info("[%s] CV空结果，回退到 calibrated（方案一）", target)
     else:
         best_method = select_method(metrics)
-        LOG.info("[%s] 选中方法: %s (AURC: %.4f, Spearman: %.4f)",
-                 target, best_method,
-                 metrics[metrics["method"] == best_method]["aurc"].mean(),
-                 metrics[metrics["method"] == best_method]["spearman"].mean())
+        LOG.info("[%s] 选中方法: %s", target, best_method)
 
-    # (d) Fit final residual calibrator on ALL data
-    calibrator = fit_residual_calibrator(table, random_state=rng)
+    # (d) 解析方法名称和参数
+    base_method, fusion_params = _parse_method_name(best_method)
 
-    # (e) Get calibrated uncertainty on ALL data
-    calibrated = predict_calibrated_uncertainty(calibrator, table)
+    # (e) 计算最终不确定性
+    if base_method == "calibrated":
+        calibrator = fit_residual_calibrator(table, random_state=rng)
+        selected = predict_calibrated_uncertainty(calibrator, table)
+        LOG.info("[%s] 使用 calibrated 方法", target)
+    elif base_method == "monotonic":
+        use_seg = cfg.get("monotonic_use_segment_correction", False)
+        mono_cal = fit_monotonic_calibrator(table, use_segment_correction=use_seg)
+        selected = predict_monotonic_uncertainty(mono_cal, table)
+        LOG.info("[%s] 使用 monotonic 方法 (segment_correction=%s)",
+                 target, use_seg)
+    elif base_method == "fusion":
+        if fusion_params:
+            alpha = fusion_params["alpha"]
+            beta = fusion_params["beta"]
+            gamma = fusion_params["gamma"]
+            LOG.info("[%s] 使用 fusion 方法 (α=%.1f, β=%.1f, γ=%.1f)",
+                     target, alpha, beta, gamma)
+        else:
+            # 从 CV 结果中选择最佳融合系数
+            alpha, beta, gamma = select_best_fusion_coefficients(metrics)
+            LOG.info("[%s] 使用 fusion 方法 (CV选择: α=%.1f, β=%.1f, γ=%.1f)",
+                     target, alpha, beta, gamma)
 
-    # (f) Get disagreement uncertainty on ALL data
-    disagreement = ensemble_disagreement(table)
-
-    # (g) Pick the selected method's uncertainty
-    if best_method == "calibrated":
-        selected = calibrated
+        # 拟合单调校准器
+        fusion_cal = fit_fusion_calibrator(
+            table, alpha, beta, gamma,
+            window=FUSION_WINDOW, eta=FUSION_ETA,
+        )
+        selected = predict_fusion_uncertainty(fusion_cal, table)
     else:
-        selected = disagreement
+        LOG.warning("[%s] 未知方法 %s，回退到 calibrated（方案一）", target, best_method)
+        calibrator = fit_residual_calibrator(table, random_state=rng)
+        selected = predict_calibrated_uncertainty(calibrator, table)
 
-    # (h) Convert to confidence / weight
+    # (f) Convert to confidence / weight
     confidence, weight = uncertainty_to_weight(selected, selected, minimum=minimum)
-    LOG.info("[%s] 权重范围: [%.3f, %.3f]",
-             target, weight.min(), weight.max())
+    LOG.info("[%s] 权重范围: [%.3f, %.3f]", target, weight.min(), weight.max())
 
-    # (i) Augment the position table
+    # (g) Augment the position table
     table[f"{target}_uncertainty"] = selected
     table[f"{target}_confidence"] = confidence
     table[f"{target}_weight"] = weight

@@ -69,7 +69,8 @@ def process(config, method=None, detector=None, limit_one=False, make_plots=True
                 block[col]=value
             dense_results.append(block[groups+[depth,"continuous_damage","continuous_stress","fitting_method","depth_step_cm"]])
         if make_plots:
-            folder=output/"plots"/safe_name(key[0])/safe_name(key[-1])/safe_name(key[1])
+            sfx=output_suffix or ("_sample" if limit_one else "")
+            folder=output/"plots"/safe_name(key[0])/safe_name(key[-1])/(safe_name(key[1])+sfx)
             title=" | ".join(map(str,key))
             plot_group(x,g.raw_damage.to_numpy(),g.fitted_damage.to_numpy(),g.damage_outlier.to_numpy(),"损伤等级",folder/"damage_raw_vs_fitted.png",title,config["plot"],x_dense,dd)
             plot_group(x,g.raw_stress.to_numpy(),g.fitted_stress.to_numpy(),g.stress_outlier.to_numpy(),"应力 (MPa)",folder/"stress_raw_vs_fitted.png",title,config["plot"],x_dense,ss)
@@ -86,8 +87,8 @@ def process(config, method=None, detector=None, limit_one=False, make_plots=True
     return res,summary
 
 def main():
-    ap=argparse.ArgumentParser(); ap.add_argument("--config",default="config.yaml"); ap.add_argument("--one-group",action="store_true"); ap.add_argument("--no-plots",action="store_true"); args=ap.parse_args()
+    ap=argparse.ArgumentParser(); ap.add_argument("--config",default="config.yaml"); ap.add_argument("--one-group",action="store_true"); ap.add_argument("--no-plots",action="store_true"); ap.add_argument("--suffix",default="",help="输出文件后缀，用于区分不同权重模式"); args=ap.parse_args()
     logging.basicConfig(level=logging.INFO,format="%(asctime)s %(levelname)s %(message)s",handlers=[logging.FileHandler("fitting.log",encoding="utf-8"),logging.StreamHandler()])
     with open(args.config,encoding="utf-8") as f: cfg=yaml.safe_load(f)
-    process(cfg,limit_one=args.one_group,make_plots=not args.no_plots)
+    process(cfg,limit_one=args.one_group,make_plots=not args.no_plots,output_suffix=args.suffix)
 if __name__=="__main__": main()
